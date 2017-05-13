@@ -21,10 +21,26 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+  :root { 
+    --base: #ffc600;
+    --blur: 10px;
+    --spacing: 100px;
+  } 
 
+  img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
+    /* Using :root can be useful to declare global CSS Variables:*/
+    
 
     body {
       text-align: center;
@@ -48,6 +64,37 @@
   </style>
 
   <script>
+  //tutorials 
+  const inputs= document.querySelectorAll('.controls input')
+
+  function handleUpdate(){
+    const suffix= this.dataset.sizing || "";
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+  }
+
+  inputs.forEach(input => input.addEventListener('change', handleUpdate));
+  inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+
+
+  //my work
+  // const selectedColor= document.querySelector(`input[type=color]`);
+  // const blurBar= document.querySelector(`input[name=blur]`);
+  // const spaceBar= document.querySelector(`input[name=spacing]`);
+
+  // //document.querySelectorAll('input') return  an array like structure called nodelist which dosent has all array methodes like map and reduce, it has forEach
+
+
+  // blurBar.addEventListener('change', function(d){
+  //   document.documentElement.style.setProperty('--blur', `${d.target.value}px`);
+  // });
+  // spaceBar.addEventListener('change', function(f){
+  //   document.documentElement.style.setProperty('--spacing', `${f.target.value}px`);
+  // }); 
+  // selectedColor.addEventListener('change', function(e){
+  //   document.documentElement.style.setProperty('--base', e.target.value);
+  // })
+
   </script>
 
 </body>
